@@ -1,6 +1,6 @@
 ![img](https://raw.githubusercontent.com/Anmincat/anmincat.github.io/main/logo.png) <br>
 Website: [https://anmincat.github.io/](https://anmincat.github.io/) <br>
-Download Pre-built ISO: [https://github.com/Anmincat/AnmincatLinux/releases/latest](https://github.com/Anmincat/AnmincatLinuxPlus/releases/latest)
+Download Pre-built ISO: [https://github.com/Anmincat/AnmincatLinuxPlus/releases/latest](https://github.com/Anmincat/AnmincatLinuxPlus/releases/latest)
 # Introduction
 Anmincat Linux Plus is 125MB On-RAM Live Linux Distribution based on Debian, Devuan and MX Linux packages. Linux maintenance environment for home computer.
 	<ul>
