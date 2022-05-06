@@ -1,0 +1,228 @@
+#!/bin/sh
+#	build script for Anmincat Linux. 
+#	Made by Supphakit Duanghoy @2022.
+
+if [ ! $(whoami) = "root"  ]; then
+	echo "You must be root to use this script."
+	exit 1
+fi
+
+check() {
+	# https://www.linuxfromscratch.org/lfs/view/stable/chapter02/hostreqs.html
+	bash --version | head -n1 | cut -d" " -f2-4
+	MYSH=$(readlink -f /bin/sh)
+	echo "/bin/sh -> $MYSH"
+	echo $MYSH | grep -q bash || echo "ERROR: /bin/sh does not point to bash"
+	unset MYSH
+	
+	echo -n "Binutils: "; ld --version | head -n1 | cut -d" " -f3-
+	bison --version | head -n1
+	
+	if [ -h /usr/bin/yacc ]; then
+	  echo "/usr/bin/yacc -> `readlink -f /usr/bin/yacc`";
+	elif [ -x /usr/bin/yacc ]; then
+	  echo yacc is `/usr/bin/yacc --version | head -n1`
+	else
+	  echo "yacc not found"
+	fi
+	
+	echo -n "Coreutils: "; chown --version | head -n1 | cut -d")" -f2
+	diff --version | head -n1
+	find --version | head -n1
+	
+	if [ -h /usr/bin/awk ]; then
+	  echo "/usr/bin/awk -> `readlink -f /usr/bin/awk`";
+	elif [ -x /usr/bin/awk ]; then
+	  echo awk is `/usr/bin/awk --version | head -n1`
+	else
+	  echo "awk not found"
+	fi
+	
+	gcc --version | head -n1
+	apt-get --version | head -n1
+	grep --version | head -n1
+	gzip --version | head -n1
+	m4 --version | head -n1
+	make --version | head -n1
+	patch --version | head -n1
+	sed --version | head -n1
+	tar --version | head -n1
+	makeinfo --version | head -n1
+	xz --version | head -n1
+	xorriso --version | head -n1
+	isohybrid --version | head -n1
+	
+}
+
+getsources() {
+	if [ ! -d "packages" ]; then
+		mkdir -pv packages/base
+		mkdir -v packages/tools
+		mkdir -v packages/xorg
+		mkdir -v packages/xapps
+	fi
+	./pkg-base
+	./pkg-tools
+	./pkg-xorg
+	./pkg-xapps
+	./pkg-make-list
+}
+
+getkernel() {
+	for k in kernel/linux-*; do
+		if [ -d "$k" ]; then
+			rm -rf $k
+		fi
+		if [ -f "$k" ]; then
+			rm $k
+		fi
+	done
+	echo "[build] Downloading Linux Kernel source"
+	cd kernel
+	wget -N https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.10.109.tar.xz
+	tar xvf linux-5.10.109.tar.xz
+	cd ..
+}
+
+getbusybox() {
+		for u in userland/busybox-*; do
+		if [ -d "$u" ]; then
+			rm -rf $u
+		fi
+		if [ -f "$u" ]; then
+			rm $u
+		fi
+	done
+	echo "[build] Downloading busybox source"
+	cd userland
+	wget -N https://busybox.net/downloads/busybox-1.35.0.tar.bz2
+	tar xvf busybox-1.35.0.tar.bz2
+	cd ..
+}
+
+build() {
+	# run buildscripts
+	for i in buildscripts/0*; do
+		$i
+	done
+}
+
+buildnokernel() {
+	# run buildscripts except kernel buildscript
+	buildscripts/00*
+	buildscripts/01*
+	buildscripts/02*
+	buildscripts/03*
+	buildscripts/04*
+	buildscripts/06*
+	buildscripts/07*
+	buildscripts/08*
+}
+
+buildkernel() {
+	buildscripts/05*
+}
+
+busyboxconf() {
+	for b in userland/busybox*; do
+		if [ -d "$b" ]; then
+			cd $b
+		fi
+	done
+	cp -rv ../busyboxconfig_$(uname -m)	.config
+	make menuconfig
+	cp -rv .config ../busyboxconfig_$(uname -m)
+	cd ../..
+}
+
+kernelconf() {
+	for k in kernel/linux*; do
+		if [ -d "$k" ]; then
+			cd $k
+		fi
+	done
+	cp -rv ../kernelconfig_$(uname -m)	.config
+	make menuconfig
+	cp -rv .config ../kernelconfig_$(uname -m)
+	cd ../..
+}
+
+help() {
+	echo "Usage: ./build <all,build,build_[rootfs,kernel],check,update_[package,kernel,busybox],clean,help,config_[busybox,kernel]>"
+	echo "Example: ./build all"
+	echo "Example: ./build build_nokernel"
+	echo "(You may wanna use this after kernel image and modules is already existed)"
+	echo
+	echo ' check		Check requirements.'
+	echo ' all 		Build all.'
+	echo ' nokernel	Build without kernel compilation'
+	echo ' clean		Clean everything.'
+	echo ' build_kernel 	Build kernel and modules.'
+	echo ' update_package	Download/Update packages.'
+	echo ' update_kernel	Download/Update Linux kernel.'
+	echo ' update_busybox	Download/Update Busybox.'
+	echo ' config_busybox	Launch Busybox configuration.'
+	echo ' config_kernel	Launch Linux Kernel configuration.'
+	echo
+	echo 'Made by Supphakit Duanghoy (c) 2022, for building Anmincat Linux.'
+}
+
+case "$1" in
+	all)
+		getbusybox
+		getkernel
+		getsources
+		build
+		;;
+	update_package)
+		getsources
+		;;
+	update_kernel)
+		getkernel
+		;;
+	update_busybox)
+		getbusybox
+		;;
+	nokernel)
+		buildnokernel
+		;;
+	build_kernel)
+		buildkernel
+		;;
+	config_busybox)
+		busyboxconf
+		;;
+	config_kernel)
+		kernelconf
+		;;	
+	clean)
+		rm -rf system
+		rm -rf cdroot
+		rm -rf packages
+		for k in kernel/linux-*; do
+			if [ -d "$k" ]; then
+				rm -rf $k
+			fi
+			if [ -f "$k" ]; then
+				rm $k
+			fi
+		done
+		for u in userland/busybox-*; do
+			if [ -d "$u" ]; then
+				rm -rf $u
+			fi
+			if [ -f "$u" ]; then
+				rm $u
+			fi
+		done
+		;;
+	check)
+		check
+		;;
+	help)
+		help
+		;;
+	*)
+		help
+		;;
+esac
