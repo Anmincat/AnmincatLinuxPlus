@@ -51,7 +51,7 @@ echo "[iso] Creating ISO9660 bootable image..."
 xorriso \
     -as mkisofs \
     -iso-level 3 \
-    -o "distrb/Anmincat_$VERSION_ID.iso" \
+    -o "distrb/AnmincatPlus_$VERSION_ID.iso" \
     -full-iso9660-filenames \
     -volid "ANMINCAT" \
     -isohybrid-mbr /usr/lib/ISOLINUX/isohdpfx.bin \
@@ -69,23 +69,19 @@ xorriso \
     "cdroot"
 
 echo "[iso] Calculating md5..."
-md5sum distrb/Anmincat_$VERSION_ID.iso > distrb/MD5SUM.txt
+md5sum distrb/AnmincatPlus_$VERSION_ID.iso > distrb/MD5SUM.txt
 cat distrb/MD5SUM.txt
 
 echo "[iso] Calculating sha1sum..."
-sha1sum distrb/Anmincat_$VERSION_ID.iso > distrb/SHA1SUM.txt
+sha1sum distrb/AnmincatPlus_$VERSION_ID.iso > distrb/SHA1SUM.txt
 cat distrb/SHA1SUM.txt
 
 echo "[iso] Calculating sha256..."
-sha256sum distrb/Anmincat_$VERSION_ID.iso > distrb/SHA256SUM.txt
+sha256sum distrb/AnmincatPlus_$VERSION_ID.iso > distrb/SHA256SUM.txt
 cat distrb/SHA256SUM.txt
 
 echo "[iso] Copying files/root/INSTALLED_PACKAGES to PACKAGES.txt..."
 cp -rv files/root/PACKAGES distrb/PACKAGES.txt
-chown 1000:1000 distrb/PACKAGES.txt
-chown 1000:1000 distrb/Anmincat_$VERSION_ID.iso
-chown 1000:1000 distrb/MD5SUM.txt
-chown 1000:1000 distrb/SHA1SUM.txt
-chown 1000:1000 distrb/SHA256SUM.txt
+chown 1000:1000 -R distrb/
 
 echo "[iso] Finished!"

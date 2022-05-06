@@ -2,4 +2,4 @@
 
 . /etc/os-release
 
-echo "Anmincat $VERSION"
+echo "Anmincat Plus $VERSION"
