@@ -7,11 +7,12 @@ libpng16-16 libsensors5 libsensors-config libsm6 libstdc++6 libsystemd0 libunwin
 libwayland-client0 libwayland-server0 libx11-6 libx11-data libx11-xcb1 libxau6 libxaw7 libxcb1 libxcb-dri2-0 
 libxcb-dri3-0 libxcb-glx0 libxcb-present0 libxcb-shm0 libxcb-sync1 libxcb-util1 libxcb-xfixes0 libxcursor1 
 libxdamage1 libxdmcp6 libxext6 libxfixes3 libxfont2 libxft2 libxi6 libxinerama1 libxkbfile1 libxmu6 libxmuu1 
-libxpm4 libxrandr2 libxrender1 libxshmfence1 libxss1 libxt6 libxtst6 libxvmc1 libxxf86vm1 libz3-4 libzstd1 "
+libxpm4 libxrandr2 libxrender1 libxshmfence1 libxss1 libxt6 libxtst6 libxvmc1 libxxf86vm1 libz3-4 libzstd1 
+libdrm-nouveau2 libdrm-amdgpu1 libdrm-radeon1 libdrm-intel1 "
 
 PACKAGES="x11-common x11-xkb-utils xbitmaps xfonts-100dpi xfonts-75dpi xfonts-encodings xfonts-utils xinit 
 xkb-data xserver-common xserver-xorg-core xserver-xorg-input-evdev fontconfig fontconfig-config keyboard-configuration 
-x11-xserver-utils "
+x11-xserver-utils xserver-xorg-video-nouveau xserver-xorg-video-amdgpu xserver-xorg-video-radeon xserver-xorg-video-intel "
 
 rm packages/xorg/*.deb
 cd packages/xorg
