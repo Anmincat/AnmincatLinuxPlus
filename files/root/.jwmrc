@@ -210,8 +210,7 @@
 	<Key mask="CAS" key="R">exec:jwm -restart</Key>
 
 	<StartupCommand>
-		conky &
-		idesk
+		pcmanfm --desktop
 	</StartupCommand>
 
 </JWM>
