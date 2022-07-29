@@ -11,8 +11,8 @@ clear
 echo ' /\_/\'
 echo '( o.o )'
 echo ' > ^ <'
-echo "Anmincat Plus ${VERSION} Running Linux Kernel $(uname -r)."
-echo "Anmincat Linux Plus is free (GPL) live mini rescue system."
+echo "Anmincat ${VERSION} Running Linux Kernel $(uname -r)."
+echo "Anmincat Linux is free (GPL) live mini rescue system."
 echo "Remember! Anmincat comes with ABSOLUTELY NO WARRANTY!"
 echo
 sleep 2
@@ -25,12 +25,6 @@ mkdir -p /dev/shm
 echo -n "Mounting fstab..."
 mount -a
 check_status
-
-if [ -x /sbin/swapon ]; then
-	echo -n "Enabling swap space..."
-	swapon -a
-	check_status
-fi
 
 echo -n "Remounting root rw..."
 mount -o remount,rw /
