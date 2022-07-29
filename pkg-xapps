@@ -23,6 +23,7 @@ echo "[pkg-xapps] Downloading package libs"
 apt-get download $PACKAGES_LIBS
 
 echo "[pkg-xapps] Downloading external packages"
+wget -N https://github.com/Anmincat/spacefm/releases/download/1.0.6-1/spacefm-anmincat_1.0.6-1_amd64.deb
 wget -N https://mxrepo.com/mx/repo/pool/main/g/gtkdialog/gtkdialog_0.8.3-2mx19_amd64.deb
 wget -N http://ftp.jp.debian.org/debian/pool/main/l/leafpad/leafpad_0.8.18.1-5_amd64.deb
 wget -N http://ftp.jp.debian.org/debian/pool/main/g/gparted/gparted_0.32.0-2_amd64.deb
