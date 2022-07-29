@@ -7,7 +7,7 @@ if [ -f "/tmp/catabout.version" ]; then
 fi
 
 . /etc/os-release
-echo "Anmincat Plus $VERSION" > /tmp/catabout.version
+echo "Anmincat $VERSION" > /tmp/catabout.version
 
 export MAIN_DIALOG='
 <window title="About Anmincat">
