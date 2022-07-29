@@ -1,7 +1,7 @@
 #!/bin/sh
 
 echo
-echo "Now installing base system..."
+echo "Now making base system..."
 echo
 
 for packages in packages/base/*.deb; do
@@ -30,8 +30,6 @@ cp -v files/root/.bash_profile system/root/
 cp -v files/root/.conkyrc system/root/
 cp -rv files/root/.config system/root/
 cp -rv files/root/.icons system/root/
-cp -rv files/root/.idesktop system/root/
-cp -rv files/root/.ideskrc system/root/
 cp -rv files/root/.Xresources system/root/
 cp -rv files/root/PACKAGES system/root/
 cp -rv files/root/LICENSE system/root/
