@@ -19,6 +19,6 @@ echo "[pkg-tools] Downloading package libs"
 apt-get download $PACKAGES_LIBS
 
 echo "[pkg-tools] Downloading externel packages"
-wget -N https://github.com/chenall/grub4dos/releases/download/0.4.6a/grub4dos-0.4.6a-2022-01-18.7z
+wget -N https://github.com/chenall/grub4dos/releases/download/0.4.6a/grub4dos-0.4.6a-2022-07-19.7z
 
 cd ../..
