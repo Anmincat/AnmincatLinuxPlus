@@ -13,12 +13,6 @@ do
 	fi
 done
 
-if [ -x /sbin/swapoff ]; then
-	echo -n "Disabling swap space..."
-	swapoff -a
-	check_status
-fi
-
 echo -n "Syncing all filesystems..."
 sync
 check_status
