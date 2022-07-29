@@ -21,7 +21,7 @@ Running ``sudo ./build check`` to check package/tools requirements for building.
 Running ``sudo ./build all`` to start building Anmincat Linux.
 
 # Goal
-Anmincat Linux Plus is "just" to be small and maintenance environment for home computer that run on RAM, also comes with all GPU drivers under 200MB.
+Anmincat Linux is just works and to be small for maintenance environment system for home computer that run on RAM, also comes with all GPU drivers under 200MB.
 
 # Legal
 Copyright (c) 2022 Supphakit Duanghoy. All rights reserved. <br>
