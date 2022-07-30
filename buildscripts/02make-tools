@@ -21,9 +21,4 @@ echo "[tools] Setting SUID to udevil"
 chown root:root system/usr/bin/udevil
 chmod u+s,go-s,ugo+x system/usr/bin/udevil
 
-echo "[tools] Symlinking mount.exfat-fuse to mount.exfat"
-cd system/sbin
-ln -s mount.exfat-fuse mount.exfat
-cd ../..
-
 echo "[tools] Finished!"
