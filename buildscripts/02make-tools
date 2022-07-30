@@ -11,10 +11,19 @@ done
 
 echo "[tools] Installing grub4dos"
 mkdir -v system/usr/lib/grub4dos
-cp packages/tools/grub4dos-0.4.6a-2022-01-18.7z system/usr/lib/grub4dos
+cp packages/tools/*.7z system/usr/lib/grub4dos
 cd system/usr/lib/grub4dos
-7z x grub4dos-0.4.6a-2022-01-18.7z
-rm grub4dos-0.4.6a-2022-01-18.7z
+7z x *.7z
+rm *.7z
 cd ../../../../
+
+echo "[tools] Setting SUID to udevil"
+chown root:root system/usr/bin/udevil
+chmod u+s,go-s,ugo+x system/usr/bin/udevil
+
+echo "[tools] Symlinking mount.exfat-fuse to mount.exfat"
+cd system/sbin
+ln -s mount.exfat-fuse mount.exfat
+cd ../..
 
 echo "[tools] Finished!"
