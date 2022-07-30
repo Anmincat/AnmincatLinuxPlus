@@ -8,12 +8,12 @@
 
 dmesg -n 1
 clear
-echo ' /\_/\'
+echo -e '\e[1;37m/\_/\'
 echo '( o.o )'
-echo ' > ^ <'
-echo "Anmincat ${VERSION} Running Linux Kernel $(uname -r)."
-echo "Anmincat Linux is free (GPL) live mini rescue system."
-echo "Remember! Anmincat comes with ABSOLUTELY NO WARRANTY!"
+echo -e ' > ^ <\e[0m'
+echo -e "Anmincat Linux \e[1;35m${VERSION}\e[0m Running Linux Kernel \e[1;35m$(uname -r)\e[0m"
+echo -e "Anmincat is free \e[1;33m(GPLv2)\e[0m live mini rescue system."
+echo -e "\e[1;31mRemember! Anmincat comes with ABSOLUTELY NO WARRANTY! \e[0m"
 echo
 sleep 2
 
