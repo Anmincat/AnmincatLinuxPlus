@@ -3,19 +3,25 @@
 	<!-- Menu. -->
 	<RootMenu onroot="1" height="22">
 		<Menu icon="system-file-manager.png" label="File Managers">
-			<Program icon="mc.xpm" label="MidnightCommander (Dual-Pane File Manager)">xterm -e mc</Program>
-			<Program icon="system-file-manager.png" label="PCManFM (GTK+2 File Manager)">pcmanfm</Program>
+			<Program icon="spacefm.png" label="SpaceFM (GTK+2 Advanced File Manager)">spacefm</Program>
 			<Program icon="xarchiver.xpm" label="Xarchiver (GTK+2 Archive Extract/Viewer)">xarchiver</Program>
+			<Program icon="mc.xpm" label="MidnightCommander (Console Dual-Pane File Manager)">xterm -e mc</Program>
 		</Menu>
 		<Menu icon="utilities-terminal.png" label="Terminals">
-			<Program icon="xterm-color_48x48.xpm" label="Xterm (ash)">xterm -e ash</Program>
-			<Program icon="xterm-color_48x48.xpm" label="Xterm (bash)">xterm -e bash</Program>
+			<Program icon="xterm-color_48x48.xpm" label="Xterm (ash shell)">xterm -e ash</Program>
+			<Program icon="xterm-color_48x48.xpm" label="Xterm (bash shello)">xterm -e bash</Program>
 		</Menu>
 		<Menu icon="accessories-text-editor.png" label="Editors">
 			<Program icon="leafpad.xpm" label="Leafpad (GTK+2 Text Editor)">leafpad</Program>
 			<Program icon="mcedit.xpm" label="MCedit (MidnightCommander's Text Editor)">xterm -e mcedit</Program>
 			<Program icon="utilities-terminal.png" label="Nano (Console-based Text Editor)">xterm -e nano</Program>
 			<Program icon="utilities-terminal.png" label="Vi (Vim busybox Text Editor)">xterm -e vi</Program>
+		</Menu>
+		<Menu icon="applets-screenshooter.png" label="Screenshot (scrot)">
+			<Program icon="applets-screenshooter.png" label="Now">scrot -p -d 0.5</Program>
+			<Program icon="applets-screenshooter.png" label="3sec">scrot -p -d 3</Program>
+			<Program icon="applets-screenshooter.png" label="5sec">scrot -p -d 5</Program>
+			<Program icon="applets-screenshooter.png" label="Select area">scrot -p -s</Program>
 		</Menu>
 		<Menu icon="applets-screenshooter.png" label="Viewer">
 			<Program icon="viewnior.xpm" label="Viewnior (GTK+2 Image Viewer)">viewnior</Program>
@@ -30,7 +36,6 @@
 		</Menu>
 		<Separator/>
 		<Menu icon="drive-harddisk.png" label="Harddisk/Partitions/Filesystems">
-			<Program icon="gparted.png" label="Catmount (Disk Drive Mounter)">catmount</Program>
 			<Program icon="gparted.png" label="GParted (GTK+2 Partition Editor)">gparted</Program>
 			<Program icon="xterm-color_48x48.xpm" label="Cfdisk (Ncurses-based Partition Editor)">xterm -e cfdisk</Program>
 			<Program icon="xterm-color_48x48.xpm" label="Parted (Console-based Partition Editor)">xterm -e parted</Program>
@@ -65,7 +70,7 @@
 		<!-- quick launch area. -->
 		<TrayButton icon="utilities-terminal.png">exec:xterm</TrayButton>
 		<Spacer width="3"/>
-		<TrayButton icon="system-file-manager.png">exec:pcmanfm</TrayButton>
+		<TrayButton icon="system-file-manager.png">exec:spacefm</TrayButton>
 		<Spacer width="3"/>
 		<TrayButton icon="accessories-text-editor.png">exec:leafpad</TrayButton>
 		<Spacer width="3"/>
@@ -85,62 +90,55 @@
 	</Tray>
 
 	<!-- Visual Styles. -->
-    <WindowStyle>
-        <Width>4</Width>
-        <Height>21</Height>
-        <Corner>3</Corner>
-        <Foreground>#ADADAD</Foreground>
-        <Background>#636363:#2C2C2C</Background>
-        <Outline>#000000</Outline>
-        <Opacity>0.5</Opacity>
-        <Active>
-            <Foreground>#3C3C3C</Foreground>
-            <Background>#CECECE</Background>
-            <Outline>#000000</Outline>
-            <Opacity>1.0</Opacity>
-        </Active>
-    </WindowStyle>
-    <TrayStyle group="true" list="all">
-        <Background>#CECECE</Background>
-        <Foreground>#3C3C3C</Foreground>
-        <Outline>#CECECE</Outline>
-        <Opacity>0.75</Opacity>
-    </TrayStyle>
-    <TaskListStyle>
-      <Active>
-        <Foreground>#FFFFFF</Foreground>
-        <Background>#808080</Background>
-      </Active>
-      <Foreground>#3C3C3C</Foreground>
-      <Background>#CECECE</Background>
-    </TaskListStyle>
-    <PagerStyle>
-        <Outline>#000000</Outline>
-        <Foreground>#555555</Foreground>
-        <Background>#333333</Background>
-        <Text>#FFFFFF</Text>
-        <Active>
-            <Foreground>#0077CC</Foreground>
-            <Background>#004488</Background>
-        </Active>
-    </PagerStyle>
-    <MenuStyle>
-        <Foreground>#3C3C3C</Foreground>
-        <Background>#CECECE</Background>
-        <Active>
-            <Foreground>#FFFFFF</Foreground>
-            <Background>#808080</Background>
-        </Active>
-        <Opacity>0.85</Opacity>
-    </MenuStyle>
-    <PopupStyle>
-        <Foreground>#000000</Foreground>
-        <Background>#999999</Background>
-    </PopupStyle>
-    <ButtonClose>/usr/share/icons/Anmincat/close.png</ButtonClose>
-    <ButtonMax>/usr/share/icons/Anmincat/max.png</ButtonMax>
-    <ButtonMaxActive>/usr/share/icons/Anmincat/max.png</ButtonMaxActive>
-    <ButtonMin>/usr/share/icons/Anmincat/min.png</ButtonMin>
+	<WindowStyle>
+		<Width>6</Width>
+		<Height>24</Height>
+		<Active>
+			<Background>#474c52</Background>
+			<Text>#bababa</Text>
+			<Title>#474c52:#303438</Title>
+			<Outline>grey</Outline>
+			<Opacity>1.0</Opacity>
+		</Active>
+		<Inactive>
+			<Text>white</Text>
+			<Title>#676a6d:#7e8b9b</Title>
+			<Outline>grey</Outline>
+			<Opacity>0.5:0.9:0.1</Opacity>
+		</Inactive>
+	</WindowStyle>
+	<TaskListStyle>
+		<ActiveForeground>black</ActiveForeground>
+		<ActiveBackground>white:#133296</ActiveBackground>
+		<Foreground>white</Foreground>
+		<Background>:black</Background>
+	</TaskListStyle>
+
+	<!-- Additional TrayStyle attribute: insert -->
+	<TrayStyle>
+		<Background>#474c52</Background>
+		<Foreground>white</Foreground>
+		<Opacity>0.75</Opacity>
+		</TrayStyle>
+	<PagerStyle>
+		<Outline>black</Outline>
+		<Foreground>gray90</Foreground>
+		<Background>#808488</Background>
+		<ActiveForeground>#70849d</ActiveForeground>
+		<ActiveBackground>#2e3a67</ActiveBackground>
+	</PagerStyle>
+	<MenuStyle>
+		<Foreground>white</Foreground>
+		<Background>#474c52</Background>
+		<ActiveForeground>#ff9c00</ActiveForeground>
+		<ActiveBackground>#70849d:#2e3a67</ActiveBackground>
+		<Opacity>0.5</Opacity>
+	</MenuStyle>
+	<PopupStyle>
+		<Outline>black</Outline>
+		<Foreground>black</Foreground>
+		<Background>yellow</Background>
+	</PopupStyle>
 
 	<!-- Path where icons can be found.  -->
 	<IconPath>/usr/share/icons</IconPath>
@@ -153,10 +151,10 @@
 	<IconPath>/usr/share/icons/Adwaita/24x24/devices</IconPath>
 	<IconPath>/usr/share/icons/Anmincat/mixed</IconPath>
 	<IconPath>/usr/share/icons/Anmincat</IconPath>
+	<IconPath>/usr/share/icons/Faenza/apps/48</IconPath>
 
-	<!-- Desktop Background. -->
+	<!-- Desktop -->
 	<Desktops width="2" height="1">
-		<Background type="command">feh --bg-fill /usr/share/wallpapers/default.jpg</Background>
 	</Desktops>
 
 	<!-- Double click speed (in milliseconds) -->
@@ -189,6 +187,7 @@
 	<Key key="Return">select</Key>
 	<Key key="Escape">escape</Key>
 
+	<Key key="Super_L">root:1</key>
 	<Key mask="A" key="Tab">nextstacked</Key>
 	<Key mask="A" key="F4">close</Key>
 	<Key mask="A" key="#">desktop#</Key>
@@ -210,7 +209,7 @@
 	<Key mask="CAS" key="R">exec:jwm -restart</Key>
 
 	<StartupCommand>
-		pcmanfm --desktop
+		spacefm --desktop
 	</StartupCommand>
 
 </JWM>
