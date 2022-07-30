@@ -213,7 +213,9 @@ EOF
 fi
 
 if [ ! -d "/usr/share/mime/application" ]; then
+	echo "Updating mime database..."
 	update-mime-database /usr/share/mime
+	echo "Updating gdk-pixbuf cache..."
 	/usr/lib/x86_64-linux-gnu/gdk-pixbuf-2.0/gdk-pixbuf-query-loaders --update-cache
 	touch /etc/XORG_CHECK
 fi
