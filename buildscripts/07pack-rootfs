@@ -8,6 +8,7 @@ echo "Now cleaning system..."
 echo
 
 echo "[clean-system] Removing unneeded stuffs..."
+rm -rf system/usr/share/applications
 rm -rf system/usr/share/man
 rm -rf system/usr/share/doc
 rm -rf system/usr/share/lintian
@@ -24,7 +25,6 @@ rm -rf system/usr/lib/x86_64-linux-gnu/perl/cross-config-5.32.1
 rm -rf system/usr/lib/x86_64-linux-gnu/perl/debian-config-data-5.32.1
 rm -rf system/usr/lib/mime
 rm -rf system/usr/share/aclocal
-rm -rf system/usr/share/applications
 rm -rf system/usr/share/apport
 rm -rf system/usr/share/bug
 rm -rf system/usr/share/doc-base
@@ -66,6 +66,9 @@ rm -rf system/usr/share/themes/Greybird/unity
 rm -rf system/usr/share/themes/Greybird/xfce-notify-4.0
 rm -rf system/usr/share/themes/Greybird/xfwm4
 rm -rf system/usr/share/themes/Greybird/Greybird.emerald
+
+echo "[clean-system] Copying files/usr/share/applications to rootfs"
+cp -rv files/usr/share/applications system/usr/share/applications
 
 echo "[clean-system] Removing unneeded gconv"
 mv -v system/usr/lib/x86_64-linux-gnu/gconv/ANSI_X3.110.so system/usr/lib/x86_64-linux-gnu/gconv/ANSI_X3.110.so.k
