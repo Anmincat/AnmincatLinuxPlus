@@ -7,7 +7,7 @@ libunistring2 libuuid1 libidn11 libpci3 libnl-3-200 libnl-genl-3-200 libfdisk1 l
 
 PACKAGES="chntpw dosfstools e2fsprogs exfatprogs btrfs-progs reiser4progs reiserfsprogs nmon dmidecode dmsetup fuse fuse3 
 logsave mc mc-data nano nilfs-tools ntfs-3g partclone parted readline-common lynx lynx-common pciutils pci.ids htop testdisk 
-syslinux syslinux-efi syslinux-common syslinux-utils mtools extlinux fdisk dialog gddrescue neofetch "
+syslinux syslinux-efi syslinux-common syslinux-utils mtools extlinux fdisk dialog gddrescue neofetch exfat-fuse "
 
 rm packages/tools/*.deb
 cd packages/tools
@@ -20,5 +20,6 @@ apt-get download $PACKAGES_LIBS
 
 echo "[pkg-tools] Downloading externel packages"
 wget -N https://github.com/chenall/grub4dos/releases/download/0.4.6a/grub4dos-0.4.6a-2022-07-19.7z
+wget -N https://github.com/Anmincat/udevil/releases/download/0.4.4-1/udevil_0.4.4-1_amd64.deb
 
 cd ../..
