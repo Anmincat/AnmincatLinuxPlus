@@ -12,7 +12,7 @@ Download Pre-built ISO: [https://github.com/Anmincat/AnmincatLinux/releases/late
 * Supported UEFI and BIOS
 * X Window System with JWM (Joe's Window Manager) + Graphic Drivers
 * Comes with GParted, NTFS Support (ntfs-3g), Photorec, Testdisk and more!
-* Recommended to use with Ventoy!
+* Recommended to use with Ventoy with memdisk mode
 
 # Building
 Building Anmincat Linux required [Devuan](https://www.devuan.org) (Debian fork distribution) <br>
